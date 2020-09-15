@@ -5,7 +5,7 @@ generate_module() {
   module=$1
   patterns=$2
   # sed is used here to patch sfBool function return values directly with booleans on LuaJIT
-  inclua headers/$module.h $patterns -m csfml-$module -n sf -tg -- $clang_headers | sed 's/^sfBool/bool/gm' > csfml-$module.lua
+  inclua headers/$module.h $patterns -m csfml-$module -n sf -g -- $clang_headers | sed 's/^sfBool/bool/gm' > csfml-$module.lua
 }
 
 generate_module audio '-p SFML/Audio'
