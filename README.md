@@ -4,6 +4,8 @@ LuaJIT FFI bindings for [CSFML](https://github.com/SFML/CSFML).
 The bindings were automatically generated using [inclua](https://github.com/gilzoide/inclua)
 and provide metatypes with `__gc` metamethods and other methods for struct and union types.
 
+Beware that `sfBool` is defined to `int` and numbers in Lua are truthy, including `0`.
+
 Currently, these bindings target [CSFML 2.5](https://github.com/SFML/CSFML/tree/2.5),
 but could be easily regenerated for other versions using [generate.sh](#generating-bindings).
 
@@ -50,3 +52,8 @@ First, edit [generate.sh](generate.sh) with your clang installation include
 path if needed, as this is necessary for correctly reading `size_t` usages.
 Then install [inclua](https://pypi.org/project/inclua/) and run `generate.sh`.
 
+
+## TODO
+- Patch `sfBool` with Lua booleans. This is trivial for return types, but not so much for structs.
+- Add more example files
+- Upload to LuaRocks
