@@ -322,7 +322,7 @@ typedef struct  {
 } sfVideoMode;
 
 sfVideoMode sfVideoMode_getDesktopMode();
-const sfVideoMode * sfVideoMode_getFullscreenModes(int * count);
+const sfVideoMode * sfVideoMode_getFullscreenModes(size_t * count);
 sfBool sfVideoMode_isValid(sfVideoMode mode);
 typedef unsigned long sfWindowHandle;
 typedef enum  {

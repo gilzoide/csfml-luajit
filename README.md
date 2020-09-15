@@ -5,7 +5,7 @@ The bindings were automatically generated using [inclua](https://github.com/gilz
 and provide metatypes with `__gc` metamethods and other methods for struct and union types.
 
 Currently, these bindings target [CSFML 2.5](https://github.com/SFML/CSFML/tree/2.5),
-but could be easily regenerated for other versions using [generate.sh](generate.sh).
+but could be easily regenerated for other versions using [generate.sh](#generating-bindings).
 
 ## Usage
 Each of the generated files represent a single module and are not aware about
@@ -45,7 +45,8 @@ end
 ```
 
 
-## Generating the bindings
-The script [generate.sh](generate.sh) calls `inclua` with the appropriate flags
-and should be easy to modify.
+## Generating bindings
+First, edit [generate.sh](generate.sh) with your clang installation include
+path if needed, as this is necessary for correctly reading `size_t` usages.
+Then install [inclua](https://pypi.org/project/inclua/) and run `generate.sh`.
 

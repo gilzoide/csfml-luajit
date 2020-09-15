@@ -41,7 +41,7 @@ typedef struct  {
 } sfTimeSpan;
 
 sfMusic * sfMusic_createFromFile(const char * filename);
-sfMusic * sfMusic_createFromMemory(const void * data, int sizeInBytes);
+sfMusic * sfMusic_createFromMemory(const void * data, size_t sizeInBytes);
 sfMusic * sfMusic_createFromStream(sfInputStream * stream);
 void sfMusic_destroy(sfMusic * music);
 void sfMusic_setLoop(sfMusic * music, sfBool loop);
@@ -95,7 +95,7 @@ float sfSound_getMinDistance(const sfSound * sound);
 float sfSound_getAttenuation(const sfSound * sound);
 sfTime sfSound_getPlayingOffset(const sfSound * sound);
 sfSoundBuffer * sfSoundBuffer_createFromFile(const char * filename);
-sfSoundBuffer * sfSoundBuffer_createFromMemory(const void * data, int sizeInBytes);
+sfSoundBuffer * sfSoundBuffer_createFromMemory(const void * data, size_t sizeInBytes);
 sfSoundBuffer * sfSoundBuffer_createFromStream(sfInputStream * stream);
 sfSoundBuffer * sfSoundBuffer_createFromSamples(const sfInt16 * samples, sfUint64 sampleCount, unsigned int channelCount, unsigned int sampleRate);
 sfSoundBuffer * sfSoundBuffer_copy(const sfSoundBuffer * soundBuffer);
@@ -124,7 +124,7 @@ void sfSoundRecorder_stop(sfSoundRecorder * soundRecorder);
 unsigned int sfSoundRecorder_getSampleRate(const sfSoundRecorder * soundRecorder);
 sfBool sfSoundRecorder_isAvailable();
 void sfSoundRecorder_setProcessingInterval(sfSoundRecorder * soundRecorder, sfTime interval);
-const char ** sfSoundRecorder_getAvailableDevices(int * count);
+const char ** sfSoundRecorder_getAvailableDevices(size_t * count);
 const char * sfSoundRecorder_getDefaultDevice();
 sfBool sfSoundRecorder_setDevice(sfSoundRecorder * soundRecorder, const char * name);
 const char * sfSoundRecorder_getDevice(sfSoundRecorder * soundRecorder);
