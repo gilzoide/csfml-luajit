@@ -1,20 +1,24 @@
 # CSFML LuaJIT FFI
-LuaJIT FFI bindings for [CSFML](https://github.com/SFML/CSFML).
+[LuaJIT](https://luajit.org/) [FFI](https://luajit.org/ext_ffi.html) bindings for [CSFML](https://github.com/SFML/CSFML).
 
 The bindings were automatically generated using [inclua](https://github.com/gilzoide/inclua)
 and provide metatypes with `__gc` metamethods and other methods for struct and union types.
 
-Beware that `sfBool` is defined to `int` and numbers in Lua are truthy, including `0`.
+Beware of structs that have `sfBool`, like `sfKeyEvent`, because `sfBool` is
+defined as `int` and numbers in Lua are truthy, including `0`. Assigning to them,
+as well as passing booleans as function arguments don't have this issue, as
+LuaJIT will convert them appropriately.
+Function return types are automatically patched by the generator script.
 
 Currently, these bindings target [CSFML 2.5](https://github.com/SFML/CSFML/tree/2.5),
-but could be easily regenerated for other versions using [generate.sh](#generating-bindings).
+but can be easily regenerated for other versions using [generate.sh](#generating-bindings).
 
 ## Usage
 Each of the generated files represent a single module and are not aware about
-CSFML modules interdependencies.
+CSFML modules' interdependencies.
 
-The `csfml-system` lua module must be `require`d before any of the other ones.
-In the same line, `csfml-window` must be `require`d before `csfml-graphics`.
+Thus, `csfml-system` lua module must be `require`d before any of the other ones
+and `csfml-window` must be `require`d before `csfml-graphics`.
 
 **Example:**
 
@@ -34,8 +38,8 @@ local window = sf.graphics.RenderWindow_create(
 window:setVerticalSyncEnabled(true)
 
 local event = sf.window.Event()
-while window:isOpen() ~= 0 do
-    while window:pollEvent(event) ~= 0 do
+while window:isOpen() do
+    while window:pollEvent(event) do
         if event.type == sf.window.sfEvtClosed then
             window:close()
         end
@@ -54,6 +58,6 @@ Then install [inclua](https://pypi.org/project/inclua/) and run `generate.sh`.
 
 
 ## TODO
-- Patch `sfBool` with Lua booleans. This is trivial for return types, but not so much for structs.
 - Add more example files
 - Upload to LuaRocks
+- Patch `sfBool` struct fields? Maybe proxy tables?

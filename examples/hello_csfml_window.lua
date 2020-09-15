@@ -14,8 +14,8 @@ local window = sf.graphics.RenderWindow_create(
 window:setVerticalSyncEnabled(true)
 
 local event = sf.window.Event()
-while window:isOpen() ~= 0 do
-    while window:pollEvent(event) ~= 0 do
+while window:isOpen() do
+    while window:pollEvent(event) do
         if event.type == sf.window.sfEvtClosed then
             window:close()
         end

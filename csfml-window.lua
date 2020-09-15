@@ -41,10 +41,10 @@ typedef enum  {
   sfJoystickPovY = 7,
 } sfJoystickAxis;
 
-sfBool sfJoystick_isConnected(unsigned int joystick);
+bool sfJoystick_isConnected(unsigned int joystick);
 unsigned int sfJoystick_getButtonCount(unsigned int joystick);
-sfBool sfJoystick_hasAxis(unsigned int joystick, sfJoystickAxis axis);
-sfBool sfJoystick_isButtonPressed(unsigned int joystick, unsigned int button);
+bool sfJoystick_hasAxis(unsigned int joystick, sfJoystickAxis axis);
+bool sfJoystick_isButtonPressed(unsigned int joystick, unsigned int button);
 float sfJoystick_getAxisPosition(unsigned int joystick, sfJoystickAxis axis);
 sfJoystickIdentification sfJoystick_getIdentification(unsigned int joystick);
 void sfJoystick_update();
@@ -159,7 +159,7 @@ typedef enum  {
   sfKeyReturn = 58,
 } sfKeyCode;
 
-sfBool sfKeyboard_isKeyPressed(sfKeyCode key);
+bool sfKeyboard_isKeyPressed(sfKeyCode key);
 void sfKeyboard_setVirtualKeyboardVisible(sfBool visible);
 typedef enum  {
   sfMouseLeft = 0,
@@ -175,7 +175,7 @@ typedef enum  {
   sfMouseHorizontalWheel = 1,
 } sfMouseWheel;
 
-sfBool sfMouse_isButtonPressed(sfMouseButton button);
+bool sfMouse_isButtonPressed(sfMouseButton button);
 sfVector2i sfMouse_getPosition(const sfWindow * relativeTo);
 void sfMouse_setPosition(sfVector2i position, const sfWindow * relativeTo);
 typedef enum  {
@@ -188,7 +188,7 @@ typedef enum  {
   sfSensorCount = 6,
 } sfSensorType;
 
-sfBool sfSensor_isAvailable(sfSensorType sensor);
+bool sfSensor_isAvailable(sfSensorType sensor);
 void sfSensor_setEnabled(sfSensorType sensor, sfBool enabled);
 sfVector3f sfSensor_getValue(sfSensorType sensor);
 typedef enum  {
@@ -323,7 +323,7 @@ typedef struct  {
 
 sfVideoMode sfVideoMode_getDesktopMode();
 const sfVideoMode * sfVideoMode_getFullscreenModes(size_t * count);
-sfBool sfVideoMode_isValid(sfVideoMode mode);
+bool sfVideoMode_isValid(sfVideoMode mode);
 typedef unsigned long sfWindowHandle;
 typedef enum  {
   sfNone = 0,
@@ -355,10 +355,10 @@ sfWindow * sfWindow_createUnicode(sfVideoMode mode, const sfUint32 * title, sfUi
 sfWindow * sfWindow_createFromHandle(sfWindowHandle handle, const sfContextSettings * settings);
 void sfWindow_destroy(sfWindow * window);
 void sfWindow_close(sfWindow * window);
-sfBool sfWindow_isOpen(const sfWindow * window);
+bool sfWindow_isOpen(const sfWindow * window);
 sfContextSettings sfWindow_getSettings(const sfWindow * window);
-sfBool sfWindow_pollEvent(sfWindow * window, sfEvent * event);
-sfBool sfWindow_waitEvent(sfWindow * window, sfEvent * event);
+bool sfWindow_pollEvent(sfWindow * window, sfEvent * event);
+bool sfWindow_waitEvent(sfWindow * window, sfEvent * event);
 sfVector2i sfWindow_getPosition(const sfWindow * window);
 void sfWindow_setPosition(sfWindow * window, sfVector2i position);
 sfVector2u sfWindow_getSize(const sfWindow * window);
@@ -374,14 +374,14 @@ void sfWindow_setMouseCursor(sfWindow * window, const sfCursor * cursor);
 void sfWindow_setKeyRepeatEnabled(sfWindow * window, sfBool enabled);
 void sfWindow_setFramerateLimit(sfWindow * window, unsigned int limit);
 void sfWindow_setJoystickThreshold(sfWindow * window, float threshold);
-sfBool sfWindow_setActive(sfWindow * window, sfBool active);
+bool sfWindow_setActive(sfWindow * window, sfBool active);
 void sfWindow_requestFocus(sfWindow * window);
-sfBool sfWindow_hasFocus(const sfWindow * window);
+bool sfWindow_hasFocus(const sfWindow * window);
 void sfWindow_display(sfWindow * window);
 sfWindowHandle sfWindow_getSystemHandle(const sfWindow * window);
 sfContext * sfContext_create();
 void sfContext_destroy(sfContext * context);
-sfBool sfContext_setActive(sfContext * context, sfBool active);
+bool sfContext_setActive(sfContext * context, sfBool active);
 sfContextSettings sfContext_getSettings(const sfContext * context);
 sfUint64 sfContext_getActiveContextId();
 typedef enum  {
@@ -403,7 +403,7 @@ typedef enum  {
 sfCursor * sfCursor_createFromPixels(const sfUint8 * pixels, sfVector2u size, sfVector2u hotspot);
 sfCursor * sfCursor_createFromSystem(sfCursorType type);
 void sfCursor_destroy(sfCursor * cursor);
-sfBool sfTouch_isDown(unsigned int finger);
+bool sfTouch_isDown(unsigned int finger);
 sfVector2i sfTouch_getPosition(unsigned int finger, const sfWindow * relativeTo);
 ]=]
 

@@ -101,18 +101,18 @@ typedef enum  {
 } sfFtpStatus;
 
 void sfFtpListingResponse_destroy(sfFtpListingResponse * ftpListingResponse);
-sfBool sfFtpListingResponse_isOk(const sfFtpListingResponse * ftpListingResponse);
+bool sfFtpListingResponse_isOk(const sfFtpListingResponse * ftpListingResponse);
 sfFtpStatus sfFtpListingResponse_getStatus(const sfFtpListingResponse * ftpListingResponse);
 const char * sfFtpListingResponse_getMessage(const sfFtpListingResponse * ftpListingResponse);
 size_t sfFtpListingResponse_getCount(const sfFtpListingResponse * ftpListingResponse);
 const char * sfFtpListingResponse_getName(const sfFtpListingResponse * ftpListingResponse, size_t index);
 void sfFtpDirectoryResponse_destroy(sfFtpDirectoryResponse * ftpDirectoryResponse);
-sfBool sfFtpDirectoryResponse_isOk(const sfFtpDirectoryResponse * ftpDirectoryResponse);
+bool sfFtpDirectoryResponse_isOk(const sfFtpDirectoryResponse * ftpDirectoryResponse);
 sfFtpStatus sfFtpDirectoryResponse_getStatus(const sfFtpDirectoryResponse * ftpDirectoryResponse);
 const char * sfFtpDirectoryResponse_getMessage(const sfFtpDirectoryResponse * ftpDirectoryResponse);
 const char * sfFtpDirectoryResponse_getDirectory(const sfFtpDirectoryResponse * ftpDirectoryResponse);
 void sfFtpResponse_destroy(sfFtpResponse * ftpResponse);
-sfBool sfFtpResponse_isOk(const sfFtpResponse * ftpResponse);
+bool sfFtpResponse_isOk(const sfFtpResponse * ftpResponse);
 sfFtpStatus sfFtpResponse_getStatus(const sfFtpResponse * ftpResponse);
 const char * sfFtpResponse_getMessage(const sfFtpResponse * ftpResponse);
 sfFtp * sfFtp_create();
@@ -191,9 +191,9 @@ void sfPacket_append(sfPacket * packet, const void * data, size_t sizeInBytes);
 void sfPacket_clear(sfPacket * packet);
 const void * sfPacket_getData(const sfPacket * packet);
 size_t sfPacket_getDataSize(const sfPacket * packet);
-sfBool sfPacket_endOfPacket(const sfPacket * packet);
-sfBool sfPacket_canRead(const sfPacket * packet);
-sfBool sfPacket_readBool(sfPacket * packet);
+bool sfPacket_endOfPacket(const sfPacket * packet);
+bool sfPacket_canRead(const sfPacket * packet);
+bool sfPacket_readBool(sfPacket * packet);
 sfInt8 sfPacket_readInt8(sfPacket * packet);
 sfUint8 sfPacket_readUint8(sfPacket * packet);
 sfInt16 sfPacket_readInt16(sfPacket * packet);
@@ -225,10 +225,10 @@ void sfSocketSelector_removeTcpListener(sfSocketSelector * selector, sfTcpListen
 void sfSocketSelector_removeTcpSocket(sfSocketSelector * selector, sfTcpSocket * socket);
 void sfSocketSelector_removeUdpSocket(sfSocketSelector * selector, sfUdpSocket * socket);
 void sfSocketSelector_clear(sfSocketSelector * selector);
-sfBool sfSocketSelector_wait(sfSocketSelector * selector, sfTime timeout);
-sfBool sfSocketSelector_isTcpListenerReady(const sfSocketSelector * selector, sfTcpListener * socket);
-sfBool sfSocketSelector_isTcpSocketReady(const sfSocketSelector * selector, sfTcpSocket * socket);
-sfBool sfSocketSelector_isUdpSocketReady(const sfSocketSelector * selector, sfUdpSocket * socket);
+bool sfSocketSelector_wait(sfSocketSelector * selector, sfTime timeout);
+bool sfSocketSelector_isTcpListenerReady(const sfSocketSelector * selector, sfTcpListener * socket);
+bool sfSocketSelector_isTcpSocketReady(const sfSocketSelector * selector, sfTcpSocket * socket);
+bool sfSocketSelector_isUdpSocketReady(const sfSocketSelector * selector, sfUdpSocket * socket);
 typedef enum  {
   sfSocketDone = 0,
   sfSocketNotReady = 1,
@@ -240,14 +240,14 @@ typedef enum  {
 sfTcpListener * sfTcpListener_create();
 void sfTcpListener_destroy(sfTcpListener * listener);
 void sfTcpListener_setBlocking(sfTcpListener * listener, sfBool blocking);
-sfBool sfTcpListener_isBlocking(const sfTcpListener * listener);
+bool sfTcpListener_isBlocking(const sfTcpListener * listener);
 unsigned short sfTcpListener_getLocalPort(const sfTcpListener * listener);
 sfSocketStatus sfTcpListener_listen(sfTcpListener * listener, unsigned short port, sfIpAddress address);
 sfSocketStatus sfTcpListener_accept(sfTcpListener * listener, sfTcpSocket ** connected);
 sfTcpSocket * sfTcpSocket_create();
 void sfTcpSocket_destroy(sfTcpSocket * socket);
 void sfTcpSocket_setBlocking(sfTcpSocket * socket, sfBool blocking);
-sfBool sfTcpSocket_isBlocking(const sfTcpSocket * socket);
+bool sfTcpSocket_isBlocking(const sfTcpSocket * socket);
 unsigned short sfTcpSocket_getLocalPort(const sfTcpSocket * socket);
 sfIpAddress sfTcpSocket_getRemoteAddress(const sfTcpSocket * socket);
 unsigned short sfTcpSocket_getRemotePort(const sfTcpSocket * socket);
@@ -261,7 +261,7 @@ sfSocketStatus sfTcpSocket_receivePacket(sfTcpSocket * socket, sfPacket * packet
 sfUdpSocket * sfUdpSocket_create();
 void sfUdpSocket_destroy(sfUdpSocket * socket);
 void sfUdpSocket_setBlocking(sfUdpSocket * socket, sfBool blocking);
-sfBool sfUdpSocket_isBlocking(const sfUdpSocket * socket);
+bool sfUdpSocket_isBlocking(const sfUdpSocket * socket);
 unsigned short sfUdpSocket_getLocalPort(const sfUdpSocket * socket);
 sfSocketStatus sfUdpSocket_bind(sfUdpSocket * socket, unsigned short port, sfIpAddress address);
 void sfUdpSocket_unbind(sfUdpSocket * socket);
